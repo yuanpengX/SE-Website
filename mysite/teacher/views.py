@@ -5,6 +5,7 @@ from models import Paper, Question, Score, History
 # Create your views here.
 
 def AutoGeneratePaper(request):
+    # here we need user_auth
     if request.POST:
         form = AutoGeneratePaperForm(request.POST)
         if form.is_valid():
@@ -24,9 +25,10 @@ def AutoGeneratePaper(request):
 
 
 def PaperAnalysis(request, offset):
+    #this view generate PapeAnalysis with ID (get from url)
         if len(offset) is not 20:
-            raise Http404();
-        Paper = P
+            raise Http404()
+        Paper = Paper.objects.filter()
 
 def PaperView(request):
     # Here I need to get info of teacher
