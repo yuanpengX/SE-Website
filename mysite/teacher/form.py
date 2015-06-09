@@ -6,3 +6,5 @@ class AutoGeneratePaperForm(forms.Form):
     CheckNum = forms.IntegerField()
     Difficulty = forms.FloatField()
     PaperName = forms.CharField()
+
+class AddQuestionForm(form.Form):
