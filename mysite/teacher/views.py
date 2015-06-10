@@ -1,7 +1,10 @@
 from django.shortcuts import render_to_response
-from form import AutoGeneratePaperForm
-from django.http import Http404
+from form import QuestionSearchForm,QuestionAddForm
+from django.http import Http404,HttpResponseRedirect
+from math import exp
+import random
 from models import Paper, Question, Score, History
+import datetime
 import re
 import os
 from django.template.context import RequestContext
@@ -16,26 +19,74 @@ from django.views.decorators.csrf import csrf_protect, csrf_exempt
 
 # Create your views here.
 
+#finish0.9
+def SelectQuestion(Ch,Type_i,Num,Diff):
+    SelectQue = []
+    mysum = 0
+    for i in [2,3,4,5]:
+        p = exp(-abs(i-Diff))
+        NumQ = round(Num*p)
+        mysum +=NumQ
+        Q = Question.objects.filter(Chapter_in=Ch, Type=Type_i, Difficulty=i)
+        if len(Q)<NumQ:
+            return []
+        else:
+            random.sample(Q, NumQ)
+            SelectQue.append(Q)
+    Q = Question.objects.filter(Chapter_in=Ch, Type=Type_i, Difficulty=i)
+    NumQ = Num-mysum
+    if len(Q)<NumQ:
+        return []
+    else:
+        random.sample(Q,NumQ)
+        SelectQue.append(Q)
+    return SelectQue
+#finish0.9
 def PaperAutoGenerate(request):
     # here we need user_auth
+    if not request.user.is_authenticated():
+        return HttpResponseRedirect('/user_auth/');
     if request.POST:
-        form = AutoGeneratePaperForm(request.POST)
+        form = QuestionSearchForm(request.POST)
         if form.is_valid():
             cd = form.cleaned_data
-            Ch = cd.Chapter
-            SNum = cd.SelectNum
-            CNum = cd.CheckNum
-            Diff = cd.Difficulty
+            Ch = cd['Chapter']
+            SNum = cd['SelectNum']
+            JNum = cd['CheckNum']
+            Diff = cd['Difficulty']
+            Name = cd['PaperName']
+            Dead =cd['DeadLine']
             ##select question from DB
-            ChQuesList = Question.objects.filter(Chapter__contains=Ch, Type=0).order_by('Difficulty')
-            SelQuesList = Question.objects.filter(Chapter__contains=Ch, Type=1).order_by('Difficulty')
-            QuestList = [ChQuesList, SelQuesList]
+            # select algorithm
+            ChL = SelectQuestion(Ch, 0, SNum, Diff)
+            if not ChL:
+                form.errors.append('Not Enough Multiple Choice Question')
+            #JudQuesList = Question.objects.filter(Chapter__in=Ch, Type=1).order_by('Difficulty')
+            JuL = SelectQuestion(Ch, 1, JNum, Diff)
+            if not JuL:
+                form.errors.append('Not Enough Judge Question')
+            QuestList = [ChL, JuL]
+            # add paper into database
+            Qid = ''
+            for question in QuestList:
+                Qid = Qid + question.QuestionId
+            paperid = re.sub(r'-:\\.\\ ',str(datetime.datetime.now))
+            paperid = request.user.name + paperid[0:15]
+            Paper.objects.create(PaperId= paperid,
+                                PaperName = Name,
+                                QId = Qid,
+                                Creator = request.user.name,
+                                # jfaj
+                                ClassId = ClassId,
+                                StartTime = datetime.datetime.now(),
+                                Deadline = Dead )
             return render_to_response('PaperView.html', {'QuestList': QuestList})
     else:
-        form = AutoGeneratePaperForm(request.POST)
+        form = QuestionSearchForm()
     return render_to_response('', {'form': form})
 
 def PaperManualGenerate(request):
+
     return render_to_response('',locals())
 
 def PaperAnalysis(request, offset):
@@ -43,13 +94,10 @@ def PaperAnalysis(request, offset):
     PaperView = False
     AuthError = False
     if request.user.is_authenticated():
-        if len(offset) is not 20:  # LENGTH is exactly 20
-            raise Http404()
-        else:
-            try:
-                tmp = long(offset) # MUST be pure number
-            except ValueError:
-                raise Http404()
+        try:
+           PaperL = Paper.objects.filter(PaperId=offset)
+        except Paper.DoesNotExist:
+           raise Http404()
         ''' Gengerate Analysis Result
             Here we use lib to generate pic
         '''
@@ -62,36 +110,46 @@ def PaperAnalysis(request, offset):
     else:
         AuthError = True
     return render_to_response('',{'AuthError':AuthError,'QuestionList':QuestionList,'PaperView':PaperView})
-
+#finish0.9
 def PaperView(request,offset):
     #this view generate PapeAnalysis with ID (get from url)
-    AuthError = False
     Paperview = True
-    if request.user.is_authenticated():
-        if len(offset) is not 20:  # LENGTH is exactly 20
-            raise Http404()
-        else:
-            try:
-                tmp = long(offset) # MUST be pure number
-            except ValueError:
-                raise Http404()
+    if not request.user.is_authenticated():
+        return HttpResponseRedirect('/user_auth/')
+    else:
+        try:
+           PaperL = Paper.objects.filter(PaperId=offset)
+        except Paper.DoesNotExist:
+           raise Http404()
         ''' Gengerate Analysis Result
             Here we use lib to generate pic
         '''
-        PaperL = Paper.objects.filter(PaperId=offset)
         QuesId = PaperL['QId']
         QuestionList = []
         for i in range(len(QuesId)):
-            QuestionList[i] = Question.objects.filter(QuestionId=QuesId[i*20:i+19])
-    else:
-        AuthError = True
-    return render_to_response('',{'AuthError':AuthError,'QuestionList':QuestionList,'PaperView':PaperView})
+            QuestionList[i] = Question.objects.filter(QuestionId=QuesId[i*20:i*20+19])
+    return render_to_response('paper.html',{'QuestionList':QuestionList,'view':PaperView})
 
 def QuestionModify(request):
     return render_to_response('',locals());
 
 def QuestionDelete(request):
+    if not request.user.is_authenticated():
+        return HttpResponseRedirect('/user_auth/')
+    if request.POST:
+        form1 = QuestionSearchForm(request.POST)
+        if form1.is_valid():
+            form1
     return render_to_response('',locals())
 
 def QuestionAdd(request):
+    if not request.user.is_authenticated():
+        return HttpResponseRedirect('/user_auth/')
+    if request.POST:
+        form = QuestionAddForm(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            QuestionStem = cd.
+        else:
+            return render_to_response('',{'form':form})
     return render_to_response('',locals())

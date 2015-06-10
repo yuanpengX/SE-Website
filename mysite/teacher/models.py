@@ -6,36 +6,39 @@ class Question(models.Model):
     Stem = models.CharField(max_length=2000)
     OptionA = models.CharField(max_length=100)
     OptionB = models.CharField(max_length=100)
-    OptionC = models.CharField(max_length=100,blank=True)
-    OptionD = models.CharField(max_length=100,blank=True)
-    Type = models.IntegerField
-    Difficulty = models.FloatField
-    Flag = models.BooleanField
+    OptionC = models.CharField(max_length=100, blank=True)
+    OptionD = models.CharField(max_length=100, blank=True)
+    Type = models.IntegerField  # 0 choose 1- judge
+    Difficulty = models.FloatField # 1-5 integer
+    Flag = models.BooleanField #是否修改标记位
     Answer = models.CharField(max_length=20)
     Chapter = models.CharField(max_length=20)
     Course = models.CharField(max_length=20)
 
 class Paper(models.Model):
     PaperId = models.CharField(max_length=20)
-    PaperName = models.CharField(max_length = 30)
+    PaperName = models.CharField(max_length=30)
     QId = models.CharField(max_length=400)
     Creator = models.CharField(max_length=20)  #TEAACHER'S id
     ClassId = models.CharField(max_length=20)
     StartTime = models.DateTimeField
     Deadline = models.DateTimeField
-    MaxScore = models.FloatField
-    MinScore = models.FloatField
-    SumScore = models.FloatField
-    SubmitNum = models.IntegerField
+    MaxScore = models.FloatField(null=True)
+    MinScore = models.FloatField(null=True)
+    SumScore = models.FloatField(null=True)
+    SubmitNum = models.IntegerField(null=True)
 
 # database below is used to analyze
 class Score(models.Model):
-    StudentId = models.CharField(max_length=20);
-    PaperId = models.CharField(max_length=20);
-    ValidScore = models.FloatField(null=True);
-    SubmitTimes = models.IntegerField(null=True);
+    StudentId = models.CharField(max_length=20)
+    PaperId = models.CharField(max_length=20)
+    ValidScore = models.FloatField(null=True)
+    SubmitTimes = models.IntegerField(null=True)
 # Used to Analysis
 class History(models.Model):
-    PaperId = models.CharField(max_length=20);
-    StudentId = models.CharField(max_length=20);
-    QIdError = models.CharField(max_length=20);
+    PaperId = models.CharField(max_length=20)
+    StudentId = models.CharField(max_length=20)
+    QIdError = models.CharField(max_length=20)
+
+class OnAuth(models.Model):
+    OnAuthClassId = models.CharField(max_length=10)
