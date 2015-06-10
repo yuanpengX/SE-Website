@@ -16,7 +16,7 @@ from django.views.decorators.csrf import csrf_protect, csrf_exempt
 
 # Create your views here.
 
-def AutoGeneratePaper(request):
+def PaperAutoGenerate(request):
     # here we need user_auth
     if request.POST:
         form = AutoGeneratePaperForm(request.POST)
@@ -34,6 +34,9 @@ def AutoGeneratePaper(request):
     else:
         form = AutoGeneratePaperForm(request.POST)
     return render_to_response('', {'form': form})
+
+def PaperManualGenerate(request):
+    return render_to_response('',locals())
 
 def PaperAnalysis(request, offset):
     #this view generate PapeAnalysis with ID (get from url)
@@ -55,7 +58,7 @@ def PaperAnalysis(request, offset):
         QuesId = PaperL['QId']
         QuestionList = []
         for i in range(len(QuesId)):
-
+            QuestionList[i]
     else:
         AuthError = True
     return render_to_response('',{'AuthError':AuthError,'QuestionList':QuestionList,'PaperView':PaperView})
@@ -84,4 +87,11 @@ def PaperView(request,offset):
         AuthError = True
     return render_to_response('',{'AuthError':AuthError,'QuestionList':QuestionList,'PaperView':PaperView})
 
-def
+def QuestionModify(request):
+    return render_to_response('',locals());
+
+def QuestionDelete(request):
+    return render_to_response('',locals())
+
+def QuestionAdd(request):
+    return render_to_response('',locals())
