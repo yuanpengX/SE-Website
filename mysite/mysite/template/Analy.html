@@ -66,7 +66,7 @@
 		<div class="mainbar">
 		<!-- code begin here -->
 		<form action="" method="post">
-		
+		<br>{% csrf_token %}</br>
         <p>Keyword<span class="uk-autocomplete uk-form">
           <input name="keyword" type="text" id="keyword">
         </span></p>
@@ -85,6 +85,7 @@
 				 </div>
 			</div>
 		</div><form action="" method="post">
+		<br>{% csrf_token %}</br>
 		<input type="button" onClick="window.location.href='{{ paper.Url }}';" value="Enter" /> 
 		</form>   
 		{% endfor %}

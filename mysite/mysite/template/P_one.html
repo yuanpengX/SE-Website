@@ -62,24 +62,22 @@
 
 		
 		<h3 align="center">{{ paper.PaperName }}</h3>
-		 {% for  question in QuestionList %}
+		 {% for  Question in QuestionList %}
 		<div class="uk-grid" data-uk-grid-margin>
 			<div class="uk-width-medium-1-2 uk-width-large-1-3">
 				<div class="uk-panel uk-panel-box uk-text-left">
-				<p>{{ question.Stem }}</p>
-				<p>{{ question.OptionA }}</p>
-				<p>{{ question.OptionB }}</p>
-				{% if question.OptionC %}
-				<p>{{ question.OptionC }}</p>
-				<p>{{ question.OptionD }}</p>
-				{% endif %}
-				{% if not view %}
-				<!---试卷分析提供这道题的统计-->
-				{% bar_chart  questionAna %}
-				{% else %}
-				<!--查看试卷提供的是修改按钮-->
-				<!--然而并没有想好表单怎么写，放一个坑在这-->
+					<p>{{ Question.Stem }}</p>
+					{% if Question.Type!=3 %}
+					<p>{{ Question.OptionA }}</p>
+					<p>{{ Question.OptionB }}</p>
+					<p>{{ Question.OptionC }}</p>
+					<p>{{Question. OptionD }}</p>
+					
+					
+					{% endif %}
+					{% endfor %}
 				<form action="" method="post">
+					{% crsf_token %}
 					<input type="button" onClick="window.location.href='{{ question.Url }}';" value="Modify" /> 
 				</form>
 				{% endif %}

@@ -64,6 +64,7 @@
 		<div class="mainbar">
 			<!-- code begin here -->
 			<form action="" method="post">
+			<br>{% csrf_token %}</br>
 			<p>ch_up<span class="uk-autocomplete uk-form">
 			<input name="text" type="number" id="ch_up">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			ch_lo</span><span class="uk-autocomplete uk-form">
@@ -79,6 +80,7 @@
 			</form>
 			
 			<form action="" method="post">
+			<br>{% csrf_token %}</br>
 			{% for  question in QuestionList %}
 			<div class="uk-grid" data-uk-grid-margin>
 			<div class="uk-width-medium-1-2 uk-width-large-1-3">

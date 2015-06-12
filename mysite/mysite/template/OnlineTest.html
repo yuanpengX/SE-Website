@@ -90,6 +90,7 @@
 			<p>{{ Question.OptionC }}</p>
 			<p>{{Question. OptionD }}</p>
 			<form class="uk-form uk-margin" action="" method="post">
+			<br>{% csrf_token %}</br>
 			<p>
 			<label><input type="checkbox" name={{ Question.Id }} value="A" > A</label>
 			<label><input type="checkbox" name={{ Question.Id }} value="B" > B</label>
@@ -99,6 +100,7 @@
 			</form>
 			{% else if Question.Type==3 %}
 			<form class="uk-form uk-margin" action="" method="post">
+			<br>{% csrf_token %}</br>
 			<p>
 			<label><input type="radio" name={{ Question.Id }} value="T" > T</label>
 			<label><input type="radio" name={{ Question.Id }} value="F" > F</label>
@@ -111,6 +113,7 @@
 			<p>{{ Question.OptionC }}</p>
 			<p>{{Question. OptionD }}</p>
 			<form class="uk-form uk-margin" action="" method="post">
+			<br>{% csrf_token %}</br>
 			<p>
 			<label><input type="radio" name={{ Question.Id }} value="A" > A</label>
 			<label><input type="radio" name={{ Question.Id }} value="B" > B</label>

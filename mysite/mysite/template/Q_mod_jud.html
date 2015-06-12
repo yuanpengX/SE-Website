@@ -79,6 +79,7 @@
 			</p>
 			{% endif %}
 			<form action="" method="post">
+			<br>{% csrf_token %}</br>
 			<p align="center">Stem of judge<span class="uk-autocomplete uk-form">
 			<textarea id={{ form1.Stem }} style="width:500px;height:300px;"} required="required"> {{ form1.Stem }}</textarea>
 			</span></p>

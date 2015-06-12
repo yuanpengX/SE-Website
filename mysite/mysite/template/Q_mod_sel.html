@@ -79,6 +79,7 @@
 			</p>
 			{% endif %}
 			<form class="uk-form" action="" method="POST">
+			<br>{% csrf_token %}</br>
 			<p align="center">Stem of select<span class="uk-autocomplete uk-form">
 			<textarea id={{ form2.Stem }} style="width:500px;height:300px;"  required="required">{{ form2.Stem }}</textarea>
 			</span></p>
