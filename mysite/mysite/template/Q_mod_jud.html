@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title></title>
+        <title>Q_mod_jud</title>
         <link rel="stylesheet" href="css\uikit.min.css" />
         <script src="js\jquery-1.11.3.js"></script>
         <script src="js\uikit.min.js"></script>
@@ -19,84 +19,149 @@
 		
 	    <link rel="stylesheet" href="css\components\form-advanced.min.css">
 		<script src="js\components\form-advanced.min.js"></script>
+		
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link href="style.css" rel="stylesheet" type="text/css" />
+		<script type="text/javascript" src="js/cufon-yui.js"></script>
+		<script type="text/javascript" src="js/arial.js"></script>
+		<script type="text/javascript" src="js/cuf_run.js"></script>
     </head>
 
     <body>
+		<!-- top begin-->
+		<div class="header_resize">
+		<div class="logo"><h1><a href="Choose_Class.html">Black<span>66666</span> <small>choose your class here</small></a></h1></div>
+		<div class="menu_nav">
+		<ul>
 		<div class="uk-button-dropdown" data-uk-dropdown="{mode:'click'}">
-			<button class="uk-button">Paper<i class="uk-icon-caret-down"></i></button>
-			<div class="uk-dropdown">
-				<ul class="uk-nav uk-nav-dropdown">
-					<li><a href="P_manual.html">Manual</a></li>
-					<li><a href="P_auto.html">Auto</a></li>
-				</ul>
-			</div>
+		<button class="uk-button">Paper<i class="uk-icon-caret-down"></i></button>
+		<div class="uk-dropdown">
+		<ul class="uk-nav uk-nav-dropdown">
+		<li><a href="P_manual.html">Manual</a></li>
+		<li><a href="P_auto.html">Auto</a></li>
+		</ul>
+		</div>
 		</div>
 		<div class="uk-button-dropdown" data-uk-dropdown="{mode:'click'}">
-			<button class="uk-button">Question <i class="uk-icon-caret-down"></i></button>
-			<div class="uk-dropdown">
-				<ul class="uk-nav uk-nav-dropdown">
-					<li><a href="Q_add.html">Add</a></li>
-					<li><a href="Q_del_mod.html">Del/Modi</a></li>
-				</ul>
-			</div>
+		<button class="uk-button">Question <i class="uk-icon-caret-down"></i></button>
+		<div class="uk-dropdown">
+		<ul class="uk-nav uk-nav-dropdown">
+		<li><a href="Q_add.html">Add</a></li>
+		<li><a href="Q_del_mod.html">Del/Modi</a></li>
+		</ul>
+		</div>
 		</div>	
 		<div class="uk-button-dropdown" data-uk-dropdown="{mode:'click'}">
-			<button class="uk-button"><a href="Analy.html">Analysis </a></button>
-
+		<button class="uk-button"><a href="Analy.html">Analysis </a></button>
 		</div>	
-    	
-		<ul class="uk-tab uk-tab-grid uk-tab-bottom" data-uk-tab>
-			
-							<div class="uk-width-medium-3-4">
-								<div class="uk-grid uk-grid-width-medium-1-2" data-uk-margin>
-
-									<div>
-										<ul id="switch-multiple-1" class="uk-switcher">
-											<li class="uk-active">
-										
-												{% if form1.errors %}
-                    								<p style="color: red;">
-                        								please correct the error {{ form1.errors|pluralize }} below
-                   									</p>
-                								{% endif %}
-												<form action="" method="post">
-												 <p align="center">Stem of judge<span class="uk-autocomplete uk-form">
-          											<textarea id={{ form1.Stem }} style="width:500px;height:300px;"} required="required"> {{ form1.Stem }}</textarea>
-       											 </span></p>
-												 <p align="center"><span class="uk-autocomplete uk-form">Answer:
-													<input type="radio" id="form-s-r1" name={{ form1.Id }} value="T" required="required" > <label for="form-s-r1">True</label>
-                                    				<label><input type="radio" name={{ form1.Id }} value="F" required="required"> False</label>
-												</span></p>
-												<p align="center"><span class="uk-autocomplete uk-form">Course
-													<input name="{{ form1.Course }}" type="text" id={{ form1.Course }} value={{ form1.Course }} required="required">
-												</span></p>
-												<p align="center"><span class="uk-autocomplete uk-form">Chapter
-													<input name={{ form1.Chapter }} type="text" id={{ form1.Chapter }} value={{ form1.Chapter }} required="required">
-												</span></p>
-												<p align="center"><span class="uk-autocomplete uk-form">Difficulty
-													<input name={{ form1.Difficulty }} type="number" id={{ form1.Difficulty }}  value={{ form1.Difficulty }} required="required">
-												</span></p>
-												<p align="center"><span class="uk-autocomplete uk-form">Score
-													<input name={{ form1.Score }} type="number" id={{ form1.Score }}  value={{ form1.Score }} required="required">
-												</span></p>
-												<input type="submit" VALUE="Submit">
-												 </form>	 				 
-											</li>
-	
-											
-											
-										</ul>
-									</div>
-
-									
-								</div>
-							</div>  			
 		</ul>
+		</div>
+		<div class="clr"></div>
+		</div>
+		<!-- top end-->
+		
+		<div class="content">
+		<div class="content_resize">
+		<div class="mainbar">	
+			<!-- our code start here-->
+			<ul class="uk-tab uk-tab-grid uk-tab-bottom" data-uk-tab>
+			
+			<div class="uk-width-medium-3-4">
+			<div class="uk-grid uk-grid-width-medium-1-2" data-uk-margin>
+			
+			<div>
+			<ul id="switch-multiple-1" class="uk-switcher">
+			<li class="uk-active">
+			
+			{% if form1.errors %}
+			<p style="color: red;">
+			please correct the error {{ form1.errors|pluralize }} below
+			</p>
+			{% endif %}
+			<form action="" method="post">
+			<p align="center">Stem of judge<span class="uk-autocomplete uk-form">
+			<textarea id={{ form1.Stem }} style="width:500px;height:300px;"} required="required"> {{ form1.Stem }}</textarea>
+			</span></p>
+			<p align="center"><span class="uk-autocomplete uk-form">Answer:
+			<input type="radio" id="form-s-r1" name={{ form1.Id }} value="T" required="required" > <label for="form-s-r1">True</label>
+			<label><input type="radio" name={{ form1.Id }} value="F" required="required"> False</label>
+			</span></p>
+			<p align="center"><span class="uk-autocomplete uk-form">Course
+			<input name="{{ form1.Course }}" type="text" id={{ form1.Course }} value={{ form1.Course }} required="required">
+			</span></p>
+			<p align="center"><span class="uk-autocomplete uk-form">Chapter
+			<input name={{ form1.Chapter }} type="text" id={{ form1.Chapter }} value={{ form1.Chapter }} required="required">
+			</span></p>
+			<p align="center"><span class="uk-autocomplete uk-form">Difficulty
+			<input name={{ form1.Difficulty }} type="number" id={{ form1.Difficulty }}  value={{ form1.Difficulty }} required="required">
+			</span></p>
+			<p align="center"><span class="uk-autocomplete uk-form">Score
+			<input name={{ form1.Score }} type="number" id={{ form1.Score }}  value={{ form1.Score }} required="required">
+			</span></p>
+			<input type="submit" VALUE="Submit">
+			</form>	 				 
+			</li>	
+			</ul>
+			</div>	
+			</div>
+			</div>  			
+			</ul>	
+			<!-- our code end here-->
+    	</div>
+		<div class="sidebar">
+		<div class="gadget">
+		<h2 class="star"><span>Software</span> Engineer</h2><div class="clr"></div>
+		<ul class="sb_menu">
+		<li><a href="http://www.cs.zju.edu.cn/se/">Home</a></li>
+		</ul>
+		</div>
+		<div class="gadget">
+		<h2 class="star"><span>Group Members</span></h2><div class="clr"></div>
+		<ul class="ex_menu">
+		<li><a href="#">Qizhen Zhu</a><br />Leader</li>
+		<li><a href="#">Yuanpeng Xiong</a></li>
+		<li><a href="#">Lanz Who</a></li>
+		<li><a href="#">Yuan Wang</a></li>
+		</ul>
+		</div>
+		</div>
+		<div class="clr"></div>
+		</div>
+		</div>
+		
+			
+			
 
-
-
-	   
-    
+		<!-- bottom begin -->
+		<p align="center">&nbsp;</p>
+		<div class="fbg">
+		<div class="fbg_resize">
+		<div class="col c1">
+		<h2><span>Image Gallery</span></h2>
+		<img src="images/1.jpg" width="58" height="58" alt="pix" />
+		<img src="images/2.jpg" width="58" height="58" alt="pix" />
+		<img src="images/3.jpg" width="58" height="58" alt="pix" />
+		<img src="images/4.jpg" width="58" height="58" alt="pix" />
+		<img src="images/pix3.jpg" width="58" height="58" alt="pix" />
+		<img src="images/pix4.jpg" width="58" height="58" alt="pix" />
+		<img src="images/pix5.jpg" width="58" height="58" alt="pix" />
+		<img src="images/pix6.jpg" width="58" height="58" alt="pix" />
+		</div>
+		<div class="col c2">
+		<h2><span>Resources</span></h2>
+		<p>You can find our resources on<br />
+		<a href="https://github.com/yuanpengX/SE-Website">GitHub</a>. </p>
+		</div>
+		<div class="col c3">
+		<h2><span>Contact</span></h2>
+		<p>Complaintssuggestions:<br/>
+		<a href="mailto:3120104907@zju.edu.cn">3120104907@zju.edu.cn</a></p>
+		<p>Phone: +8618868105582 </p>
+		<p>Address: </p>
+		</div>
+		<div class="clr"></div>
+		</div>
+		</div>
 </body>
 </html>
 

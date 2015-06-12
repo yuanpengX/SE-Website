@@ -1,47 +1,139 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
- <script type="text/javascript" src="jquery-1.11.3.js"></script>
- <link rel="stylesheet" href="uikit-2.21.0/css/uikit.min.css" />
-        <script type="text/javascript" src="uikit-2.21.0/js/uikit.min.js"></script>
-<script type="text/javascript" src="uikit-2.21.0/js/components/pagination.min.js"></script>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>无标题文档</title>
-</head>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>OnlineTest</title>
+        <link rel="stylesheet" href="css\uikit.min.css" />
+        <script src="js\jquery-1.11.3.js"></script>
+        <script src="js\uikit.min.js"></script>
+        
+        <link rel="stylesheet" href="css\components\progress.min.css">
+        
+        <link rel="stylesheet" href="css\components\datepicker.min.css">
+        <script src="js\components\datepicker.min.js"></script>
+
+        <link rel="stylesheet" href="css\components\autocomplete.min.css">
+        <script src="js\components\autocomplete.min.js"></script>
+		
+		<link rel="stylesheet" href="css\components\sortable.min.css">
+		<script src="js\components\sortable.min.js"></script>
+		<meta name="keywords" content="" />
+
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link href="style.css" rel="stylesheet" type="text/css" />
+		<script type="text/javascript" src="js/cufon-yui.js"></script>
+		<script type="text/javascript" src="js/arial.js"></script>
+		<script type="text/javascript" src="js/cuf_run.js"></script>
+		
+		<meta charset="utf-8">
+		<script type="text/javascript">
+		var time = 1800; //seconds to count down
+		function Redirect() {
+		window.location = "http://www.baidu.com/";
+		}
+		var i = 0;
+		function dis() {
+		document.all.s.innerHTML = + (time - i) + "s remains";
+		i++;
+		}
+		timer = setInterval('dis()', 1000); //显示时间
+		timer = setTimeout('Redirect()', time * 1000); //跳转
+		</script>
+    </head>
 
 <body>
-{% for Question in QuestionList %}
-  <p>{{ Question.Stem }}</p>
-  {% if Question.Type==0 %}
-  <p>{{ Question.OptionA }}</p>
-  <p>{{ Question.OptionB }}</p>
-  <p>{{ Question.OptionC }}</p>
-  <p>{{Question. OptionD }}</p>
-  <form class="uk-form uk-margin">
-  <p>
-    <input type="checkbox" id="form-s-c1" checked>
-     <label for="form-s-c1">A</label>
-       <label><input type="checkbox"> B</label>
-      <label><input type="checkbox"> C</label>
-     <label><input type="checkbox"> D</label>
-                                </p>
-                            </form>
-  {% else %}
-   <form class="uk-form uk-margin">
-                                <p>
-                                    <input type="radio" id="form-s-r1" name="radio2" checked> <label for="form-s-r1">T</label>
-                                    <label><input type="radio" name="radio2"> F</label>
+		<!-- top begin-->
+		<div class="header_resize">
+		<div class="logo"><h1><a href="Choose_Class.html">Black<span>66666</span> <small>choose your class here</small></a></h1></div>
+		<div class="menu_nav">
+		<ul>
+		<div class="uk-button-dropdown" data-uk-dropdown="{mode:'click'}">
+		<button class="uk-button">Paper<i class="uk-icon-caret-down"></i></button>
+		<div class="uk-dropdown">
+		<ul class="uk-nav uk-nav-dropdown">
+		<li><a href="P_manual.html">Manual</a></li>
+		<li><a href="P_auto.html">Auto</a></li>
+		</ul>
+		</div>
+		</div>
+		<div class="uk-button-dropdown" data-uk-dropdown="{mode:'click'}">
+		<button class="uk-button">Question <i class="uk-icon-caret-down"></i></button>
+		<div class="uk-dropdown">
+		<ul class="uk-nav uk-nav-dropdown">
+		<li><a href="Q_add.html">Add</a></li>
+		<li><a href="Q_del_mod.html">Del/Modi</a></li>
+		</ul>
+		</div>
+		</div>	
+		<div class="uk-button-dropdown" data-uk-dropdown="{mode:'click'}">
+		<button class="uk-button"><a href="Analy.html">Analysis </a></button>
+		</div>	
+		</ul>
+		</div>
+		<div class="clr"></div>
+		</div>	
+		<br>
+		<br>
+		<!-- top end-->
+		
 
-                                </p>
-                              </form>
-                              {% endif %}{% endfor %}
-                              
+		<div class="content">
+		<div class="content_resize">
+		<div class="mainbar">
+			<!-- code begin here-->
+			<h3> {{ Paper.Name }}  </h3>
+			<span id="s"></span><br>
+			{% for Question in QuestionList %}
+			<p>{{ Question.Stem }}</p>
+			{% if Question.Type==2 %}
+			<p>{{ Question.OptionA }}</p>
+			<p>{{ Question.OptionB }}</p>
+			<p>{{ Question.OptionC }}</p>
+			<p>{{Question. OptionD }}</p>
+			<form class="uk-form uk-margin" action="" method="post">
+			<p>
+			<label><input type="checkbox" name={{ Question.Id }} value="A" > A</label>
+			<label><input type="checkbox" name={{ Question.Id }} value="B" > B</label>
+			<label><input type="checkbox" name={{ Question.Id }} value="C" > C</label>
+			<label><input type="checkbox" name={{ Question.Id }} value="D" > D</label>
+			</p>
+			</form>
+			{% else if Question.Type==3 %}
+			<form class="uk-form uk-margin" action="" method="post">
+			<p>
+			<label><input type="radio" name={{ Question.Id }} value="T" > T</label>
+			<label><input type="radio" name={{ Question.Id }} value="F" > F</label>
+			</p>
+			</form>
+			
+			{% else if Question.Type==1 %}
+			<p>{{ Question.OptionA }}</p>
+			<p>{{ Question.OptionB }}</p>
+			<p>{{ Question.OptionC }}</p>
+			<p>{{Question. OptionD }}</p>
+			<form class="uk-form uk-margin" action="" method="post">
+			<p>
+			<label><input type="radio" name={{ Question.Id }} value="A" > A</label>
+			<label><input type="radio" name={{ Question.Id }} value="B" > B</label>
+			<label><input type="radio" name={{ Question.Id }} value="C" > C</label>
+			<label><input type="radio" name={{ Question.Id }} value="D" > D</label>
+			</p>
+			</form>
+			
+			{% endif %}
+			{% endfor %}
+			<ul class="uk-pagination" data-uk-pagination="{items:1000, itemsOnPage:10, currentPage:50}"></ul>
+			
+			<input type="button" value="Submit"/> 
+			<input type="button" value="Save"/>
+		
+       
 
-  
-  <ul class="uk-pagination" data-uk-pagination="{items:1000, itemsOnPage:10, currentPage:50}"></ul>
-        
-  <input type="button" value="Submit"/> 
-   <input type="button" value="Save"/>
+			<!-- code end here -->
+		</div>
+			
+   
+   
+
                 
 </body>
 </html>
