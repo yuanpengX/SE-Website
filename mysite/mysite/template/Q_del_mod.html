@@ -57,32 +57,34 @@
             </span>
             <input type="submit" VALUE="Search">
 	     </form>
+		 
+		 <form action="" method="post">
 		 {% for  question in QuestionList %}
 		<div class="uk-grid" data-uk-grid-margin>
 			<div class="uk-width-medium-1-2 uk-width-large-1-3">
 				<div class="uk-panel uk-panel-box uk-text-left">
 				<p>{{ question.Stem }}</p>
-				{% if question.OptionA %}
+				{% if question.OptionC %}
 				<p>{{ question.OptionA }}</p>
 				<p>{{ question.OptionB }}</p>
-				{% endif %}
-				{% if question.OptionC %}
 				<p>{{ question.OptionC }}</p>
         		<p>{{ question.OptionD }}</p>
         		{% endif %}
+				<p>{{ question.Difficulty }}</p>
+				<p>{{ question.Score }}</p>
 				 </div>
 			</div>
 		</div>
-		<input type="checkbox" id=>
-		<input type="button" onClick="window.location.href='Q_mod.html';" value="Modify" /> 
+		<input type="checkbox" id={{ question.Id }} name={{ question.Id }}>
+		<input type="button" onClick="window.location.href='{{ question.Url }}';" value="Modify" /> 
 		{% endfor %}
- 
+ 		
           
-  <br>            
-  <input type="submit" VALUE="Delete">
-  </p>  
-
-     
+	  <br>            
+	  <input type="submit" VALUE="Delete">
+	  </p>  
+	  </form>
+       
     
 </body>
 </html>

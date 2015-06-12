@@ -45,7 +45,7 @@
         <br>
 		<form action="" method="post">
         <p>Keyword<span class="uk-autocomplete uk-form">
-          <input name="text5" type="text" id="keyword">
+          <input name="keyword" type="text" id="keyword">
         </span></p>
 		<p><input type="submit" VALUE="Search"></p>
 		</form>   
@@ -62,7 +62,7 @@
 				 </div>
 			</div>
 		</div><form action="" method="post">
-		<input type="button" onClick="window.location.href='Paper.html';" value="Enter" /> 
+		<input type="button" onClick="window.location.href='{{ paper.Url }}';" value="Enter" /> 
 		</form>   
 		{% endfor %}
 </body>

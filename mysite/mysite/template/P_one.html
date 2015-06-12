@@ -63,7 +63,7 @@
 				<!--查看试卷提供的是修改按钮-->
 				<!--然而并没有想好表单怎么写，放一个坑在这-->
 				<form action="" method="post">
-					<input type="button" onClick="window.location.href='Q_mod.html';" value="Modify" /> 
+					<input type="button" onClick="window.location.href='{{ question.Url }}';" value="Modify" /> 
 				</form>
 				{% endif %}
 				{% endfor %}

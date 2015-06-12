@@ -61,20 +61,23 @@
                 								{% endif %}
 												<form action="" method="POST">
 												 <p align="center">Stem of judge<span class="uk-autocomplete uk-form">
-          											<textarea id={{ form1.Stem }} style="width:500px;height:300px;"}> {{ qusetion.Stem }}</textarea>
+          											<textarea id={{ form1.Stem }} style="width:500px;height:300px;"}> {{ form1.Stem }}</textarea>
        											 </span></p>
 												 <p align="center"><span class="uk-autocomplete uk-form">Answer:
-													<input type="radio" id="form-s-r1" name="radio2" checked> <label for="form-s-r1">True</label>
-                                    				<label><input type="radio" name="radio2"> False</label>
+													<input type="radio" id="form-s-r1" name="T" checked > <label for="form-s-r1">True</label>
+                                    				<label><input type="radio" name="F"> False</label>
 												</span></p>
 												<p align="center"><span class="uk-autocomplete uk-form">Course
-													<input name="text52222" type="text" id={{ form2.Course }} value={{ question.Course }}>
+													<input name="{{ form1.Course }}" type="text" id={{ form1.Course }} value={{ form1.Course }}>
 												</span></p>
 												<p align="center"><span class="uk-autocomplete uk-form">Chapter
-													<input name="text5222" type="text" id={{ form2.Chapter }} value={{ question.Chapter }}>
+													<input name={{ form1.Chapter }} type="text" id={{ form1.Chapter }} value={{ form1.Chapter }}>
 												</span></p>
 												<p align="center"><span class="uk-autocomplete uk-form">Difficulty
-													<input name="text52223" type="text" id={{ form2.Difficulty }} value={{ question.Difficulty }}>
+													<input name={{ form1.Difficulty }} type="number" id={{ form1.Difficulty }}  value={{ form1.Difficulty }}>
+												</span></p>
+												<p align="center"><span class="uk-autocomplete uk-form">Score
+													<input name={{ form1.Score }} type="number" id={{ form1.Score }}  value={{ form1.Score }}>
 												</span></p>
 												<input type="submit" VALUE="Submit">
 												 </form>	 				 
