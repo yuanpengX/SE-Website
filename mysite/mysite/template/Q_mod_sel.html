@@ -60,34 +60,37 @@
                 								{% endif %}
 												<form class="uk-form" action="" method="POST">
 												 <p align="center">Stem of select<span class="uk-autocomplete uk-form">
-													<textarea id={{ form2.Stem }} style="width:500px;height:300px;">{{ question.Stem }}</textarea>
+													<textarea id={{ form2.Stem }} style="width:500px;height:300px;">{{ form2.Stem }}</textarea>
        											 </span></p>
 												<p align="center"><span class="uk-autocomplete uk-form">A
-												<input type="text" name="text2" value={{ question.OptionA }}  id={{ form2.OptionA }} />
+												<input type="text" name={{ form2.OptionA }} value={{ form2.OptionA }}  id={{ form2.OptionA }} />
 												</span></p>
 												<p align="center"><span class="uk-autocomplete uk-form">B
-												<input type="text" name="text2" value={{ question.OptionB }}  id={{ form2.OptionA }} />
+												<input type="text" name={{ form2.OptionB }} value={{ form2.OptionB }}  id={{ form2.OptionA }} />
 												</span></p>
 												<p align="center"><span class="uk-autocomplete uk-form">C
-												<input type="text" name="text2" value={{ question.OptionC }} id={{ form2.OptionC }} />
+												<input type="text" name={{ form2.OptionC }} value={{ form2.OptionC }} id={{ form2.OptionC }} />
 												</span>        </p>
 												<p align="center"><span class="uk-autocomplete uk-form">D
-												<input type="text" name="text2" value={{ question.OptionD }} id={{ form2.OptionD }} />
+												<input type="text" name={{ form2.OptionD }} value={{ form2.OptionD }} id={{ form2.OptionD }} />
 												</span></p>
 												<p align="center"><span class="uk-autocomplete uk-form">Answer:
-                                    				<input type="checkbox"> <label>A</label>
-                                    				<label><input type="checkbox"> B</label>
-                                    				<label><input type="checkbox"> C</label>
-													<label><input type="checkbox"> D</label>
+                                    				<input type="checkbox" name={{ form2.Id }} value="A"> <label>A</label>
+                                    				<label><input type="checkbox" name={{ form2.Id }} value="B"> B</label>
+                                    				<label><input type="checkbox" name={{ form2.Id }} value="C"> C</label>
+													<label><input type="checkbox" name={{ form2.Id }} value="D"> D</label>
 												</span></p>
 												<p align="center"><span class="uk-autocomplete uk-form">Course
-													<input name="text52222" type="text" value={{ question.Course }} id={{ form2.Course }}>
+													<input name={{ form2.Course }} type="text" value={{ form2.Course }} id={{ form2.Course }}>
 												</span></p>
 												<p align="center"><span class="uk-autocomplete uk-form">Chapter
-													<input name="text5222" type="text" value={{ question.Chapter }} id={{ form2.Chapter }}>
+													<input name={{ form2.Chapter }} type="text" value={{ form2.Chapter }} id={{ form2.Chapter }}>
 												</span></p>
 												<p align="center"><span class="uk-autocomplete uk-form">Difficulty
-													<input name="text52223" type="text" value={{ question.Difficulty }} id={{ form2.Difficulty }}>
+													<input name={{ form2.Difficulty }} type="number" value={{ form2.Difficulty }} id={{ form2.Difficulty }}>
+												</span></p>
+												<p align="center"><span class="uk-autocomplete uk-form">Score
+													<input name={{ form2.Score }} type="number" value={{ form2.Difficulty }} id={{ form2.Score }}>
 												</span></p>
 												<input type="submit" VALUE="Submit">
 												</form>	 

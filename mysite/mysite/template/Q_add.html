@@ -83,10 +83,10 @@
 													<input name={{ form2.OptionD }} type="text" id={{ form2.OptionD }}>
 												</span></p>
 												<p align="center"><span class="uk-autocomplete uk-form">Answer:
-                                    				<input type="checkbox" name="A"> <label>A</label>
-                                    				<label><input type="checkbox" name="B"> B</label>
-                                    				<label><input type="checkbox" name="C"> C</label>
-													<label><input type="checkbox" name="D"> D</label>
+                                    				<input type="checkbox" value="A" name={{ form2.Id }}> <label>A</label>
+                                    				<label><input type="checkbox" value="B" name={{ form2.Id }}> B</label>
+                                    				<label><input type="checkbox" value="C" name={{ form2.Id }}> C</label>
+													<label><input type="checkbox" value="D" name={{ form2.Id }}> D</label>
 												</span></p>
 												<p align="center"><span class="uk-autocomplete uk-form">Course
 													<input name={{ form2.Course }} type="text" id={{ form2.Course }}>
@@ -116,8 +116,8 @@
           											<textarea id={{ form1.Stem }} style="width:500px;height:300px;" name={{ form1.Stem }}></textarea>
        											 </span></p>
 												 <p align="center"><span class="uk-autocomplete uk-form">Answer:
-													<input type="radio" id="T" name="T" checked> <label for="form-s-r1">True</label>
-                                    				<label><input type="radio" id="F" name="F"> False</label>
+													<input type="radio" id="T" name={{ form1.Id }} checked value="T"> <label for="form-s-r1">True</label>
+                                    				<label><input type="radio" id="F" name={{ form1.Id }} value="F"> False</label>
 												</span></p>
 												<p align="center"><span class="uk-autocomplete uk-form">Course
 													<input name={{ form1.Course }} type="text" id={{ form1.Course }}>
