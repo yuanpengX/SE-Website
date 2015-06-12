@@ -60,37 +60,37 @@
                 								{% endif %}
 												<form class="uk-form" action="" method="POST">
 												 <p align="center">Stem of select<span class="uk-autocomplete uk-form">
-													<textarea id={{ form2.Stem }} style="width:500px;height:300px;">{{ form2.Stem }}</textarea>
+													<textarea id={{ form2.Stem }} style="width:500px;height:300px;"  required="required">{{ form2.Stem }}</textarea>
        											 </span></p>
 												<p align="center"><span class="uk-autocomplete uk-form">A
-												<input type="text" name={{ form2.OptionA }} value={{ form2.OptionA }}  id={{ form2.OptionA }} />
+												<input type="text" name={{ form2.OptionA }} value={{ form2.OptionA }}  id={{ form2.OptionA }}  required="required" />
 												</span></p>
 												<p align="center"><span class="uk-autocomplete uk-form">B
-												<input type="text" name={{ form2.OptionB }} value={{ form2.OptionB }}  id={{ form2.OptionA }} />
+												<input type="text" name={{ form2.OptionB }} value={{ form2.OptionB }}  id={{ form2.OptionA }}  required="required" />
 												</span></p>
 												<p align="center"><span class="uk-autocomplete uk-form">C
-												<input type="text" name={{ form2.OptionC }} value={{ form2.OptionC }} id={{ form2.OptionC }} />
+												<input type="text" name={{ form2.OptionC }} value={{ form2.OptionC }} id={{ form2.OptionC }}  required="required" />
 												</span>        </p>
 												<p align="center"><span class="uk-autocomplete uk-form">D
-												<input type="text" name={{ form2.OptionD }} value={{ form2.OptionD }} id={{ form2.OptionD }} />
+												<input type="text" name={{ form2.OptionD }} value={{ form2.OptionD }} id={{ form2.OptionD }}  required="required" />
 												</span></p>
 												<p align="center"><span class="uk-autocomplete uk-form">Answer:
-                                    				<input type="checkbox" name={{ form2.Id }} value="A"> <label>A</label>
-                                    				<label><input type="checkbox" name={{ form2.Id }} value="B"> B</label>
-                                    				<label><input type="checkbox" name={{ form2.Id }} value="C"> C</label>
-													<label><input type="checkbox" name={{ form2.Id }} value="D"> D</label>
+                                    				<input type="checkbox" name={{ form2.Id }} value="A"  required="required"> <label>A</label>
+                                    				<label><input type="checkbox" name={{ form2.Id }} value="B"  required="required"> B</label>
+                                    				<label><input type="checkbox" name={{ form2.Id }} value="C"  required="required"> C</label>
+													<label><input type="checkbox" name={{ form2.Id }} value="D"  required="required"> D</label>
 												</span></p>
 												<p align="center"><span class="uk-autocomplete uk-form">Course
-													<input name={{ form2.Course }} type="text" value={{ form2.Course }} id={{ form2.Course }}>
+													<input name={{ form2.Course }} type="text" value={{ form2.Course }} id={{ form2.Course }}  required="required">
 												</span></p>
 												<p align="center"><span class="uk-autocomplete uk-form">Chapter
-													<input name={{ form2.Chapter }} type="text" value={{ form2.Chapter }} id={{ form2.Chapter }}>
+													<input name={{ form2.Chapter }} type="text" value={{ form2.Chapter }} id={{ form2.Chapter }}  required="required">
 												</span></p>
 												<p align="center"><span class="uk-autocomplete uk-form">Difficulty
-													<input name={{ form2.Difficulty }} type="number" value={{ form2.Difficulty }} id={{ form2.Difficulty }}>
+													<input name={{ form2.Difficulty }} type="number" value={{ form2.Difficulty }} id={{ form2.Difficulty }}  required="required">
 												</span></p>
 												<p align="center"><span class="uk-autocomplete uk-form">Score
-													<input name={{ form2.Score }} type="number" value={{ form2.Difficulty }} id={{ form2.Score }}>
+													<input name={{ form2.Score }} type="number" value={{ form2.Difficulty }} id={{ form2.Score }}  required="required">
 												</span></p>
 												<input type="submit" VALUE="Submit">
 												</form>	 
